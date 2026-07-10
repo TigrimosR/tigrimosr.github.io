@@ -286,24 +286,40 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .shot-tall img { height: 300px; object-fit: cover; }
 .shot figcaption { font-size: 13px; color: var(--text-2); text-align: center; padding: 12px 4px 4px; }
 
-/* ---------- install ---------- */
-.install-card {
-  max-width: 820px; margin: 0 auto;
+/* ---------- download / install ---------- */
+.dl-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1040px; margin: 0 auto;
+}
+.dl-card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
-  box-shadow: var(--shadow); overflow: hidden;
+  box-shadow: var(--shadow); padding: 32px 28px;
+  display: flex; flex-direction: column; align-items: flex-start;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.install-tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--line); background: var(--bg-alt); }
-.install-tab {
-  flex: 1; min-width: 120px; padding: 15px 10px;
-  font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--text-2);
-  background: transparent; border: 0; border-bottom: 2px solid transparent;
-  cursor: pointer; transition: all .18s ease;
+.dl-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.dl-ic {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--accent-soft); color: var(--accent-dark);
+  display: grid; place-items: center; margin-bottom: 18px;
 }
-.install-tab:hover { color: var(--text); }
-.install-tab.active { color: var(--accent-dark); border-bottom-color: var(--accent); background: #fff; }
-.install-pane { display: none; padding: 30px; }
-.install-pane.active { display: block; }
-.install-pane > p { font-size: 14.5px; color: var(--text-2); margin-bottom: 16px; }
+.dl-card h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
+.dl-meta { font-size: 13px; color: var(--text-2); margin: 4px 0 18px; }
+.dl-btn { width: 100%; justify-content: center; padding: 12px 18px; font-size: 14.5px; }
+.dl-size { font-weight: 500; opacity: .65; font-size: 12.5px; }
+.dl-alt { font-size: 12.5px; color: var(--text-2); margin-top: 12px; }
+.dl-alt a { color: var(--accent-dark); font-weight: 600; }
+.dl-alt a:hover { text-decoration: underline; }
+.dl-note {
+  font-size: 12.5px; color: var(--text-2); margin-top: 14px;
+  padding-top: 14px; border-top: 1px dashed var(--line); width: 100%;
+}
+.dl-note b { color: #343541; }
+.dl-note a { color: var(--accent-dark); font-weight: 600; }
+.dl-note a:hover { text-decoration: underline; }
+.cmd-mini { width: 100%; padding-right: 20px; }
+.cmd-mini code { font-size: 12px; white-space: pre; word-break: normal; overflow-x: auto; padding-right: 64px; }
+.install-note-center { max-width: 780px; margin: 34px auto 0; text-align: center; }
 .cmd {
   position: relative; background: #0d0d0d; border-radius: 12px; padding: 18px 92px 18px 20px;
 }
@@ -314,12 +330,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .cmd .copy-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); color: #cfcfd8; }
 .cmd .copy-btn:hover { color: #fff; }
 .cmd .copy-btn.done { color: #34d399; border-color: #34d399; }
-.install-note { padding: 0 30px 26px; font-size: 13px; color: var(--text-2); }
+.install-note { font-size: 13px; color: var(--text-2); }
+.install-note a { color: var(--accent-dark); font-weight: 600; }
+.install-note a:hover { text-decoration: underline; }
 code.inline {
   font-family: var(--mono); font-size: .9em; background: var(--bg-alt);
   border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px;
 }
-.install-note code.inline { background: #fff; }
 
 /* ---------- CTA ---------- */
 .cta { padding: 120px 24px; text-align: center; background: var(--bg-alt); border-top: 1px solid var(--line); }
@@ -356,6 +373,7 @@ code.inline {
 @media (max-width: 980px) {
   .split { grid-template-columns: 1fr; gap: 44px; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .dl-grid { grid-template-columns: 1fr; max-width: 520px; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); }
   .shots { grid-template-columns: repeat(2, 1fr); }
   .shot, .shot-wide { grid-column: span 2; }

@@ -26,14 +26,14 @@
       <a href="#architecture">Architecture</a>
       <a href="#features">Features</a>
       <a href="#screens">Screenshots</a>
-      <a href="#install">Install</a>
+      <a href="#install">Download</a>
     </nav>
     <div class="nav-actions">
       <a class="btn btn-ghost" href="https://github.com/Sompote/TigrimOSR" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         GitHub
       </a>
-      <a class="btn btn-primary" href="#install">Get Started</a>
+      <a class="btn btn-primary" href="#install">Download</a>
     </div>
     <button class="nav-burger" id="navBurger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -55,8 +55,8 @@
       One self-contained binary. No Node. No Python runtime.
     </p>
     <div class="hero-cta reveal">
-      <a class="btn btn-primary btn-lg" href="#install">Get Started
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <a class="btn btn-primary btn-lg" href="#install">Download the App
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
       </a>
       <a class="btn btn-ghost btn-lg" href="https://github.com/Sompote/TigrimOSR" target="_blank" rel="noopener">View on GitHub</a>
     </div>
@@ -291,36 +291,46 @@
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">Get started</span>
-      <h2>Running in one command</h2>
+      <h2>Download the app</h2>
+      <p>Prebuilt desktop apps — no build tools, no runtimes. Just download and open.</p>
     </div>
-    <div class="install-card reveal">
-      <div class="install-tabs" id="installTabs">
-        <button class="install-tab active" data-target="inst-docker">🐳 Docker</button>
-        <button class="install-tab" data-target="inst-mac">🍎 macOS</button>
-        <button class="install-tab" data-target="inst-linux">🐧 Linux</button>
-        <button class="install-tab" data-target="inst-win">🪟 Windows</button>
+    <div class="dl-grid">
+      <div class="dl-card reveal">
+        <div class="dl-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M17.05 12.54c-.03-2.62 2.14-3.88 2.24-3.94-1.22-1.79-3.12-2.03-3.8-2.06-1.61-.16-3.15.95-3.97.95-.82 0-2.08-.93-3.43-.9-1.76.03-3.39 1.02-4.3 2.6-1.83 3.18-.47 7.88 1.32 10.46.87 1.26 1.91 2.68 3.27 2.63 1.31-.05 1.81-.85 3.4-.85 1.59 0 2.03.85 3.42.82 1.42-.02 2.31-1.28 3.18-2.55 1-1.46 1.41-2.87 1.43-2.94-.03-.02-2.74-1.05-2.76-4.22zM14.44 4.83c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.25 2-1.09 3.18 1.15.09 2.33-.58 3.05-1.45z"/></svg></div>
+        <h3>macOS</h3>
+        <p class="dl-meta">macOS 12+ · Apple Silicon &amp; Intel · v0.6.2</p>
+        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.6.2/TigrimOS-0.6.2.dmg">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
+          Download .dmg <span class="dl-size">52 MB</span>
+        </a>
+        <div class="dl-alt">
+          Terminal builds:
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.6.2/tigrimos-0.6.2-macos-arm64.tar.gz">arm64.tar.gz</a> ·
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.6.2/tigrimos-0.6.2-macos-x86_64.tar.gz">x86_64.tar.gz</a>
+        </div>
+        <p class="dl-note">Not notarized yet — first launch: right-click <b>TigrimOS.app</b> → Open → Open.</p>
       </div>
-      <div class="install-panes">
-        <div class="install-pane active" id="inst-docker">
-          <p>Recommended for servers — auto-generates a login token, builds the container and opens your browser.</p>
-          <div class="cmd"><code>git clone https://github.com/Sompote/TigrimOSR &amp;&amp; cd TigrimOSR
-docker compose up -d</code><button class="copy-btn" data-copy-prev>Copy</button></div>
-        </div>
-        <div class="install-pane" id="inst-mac">
-          <p>Native desktop build. Requires Rust 1.75+ and Xcode Command Line Tools.</p>
-          <div class="cmd"><code>curl -fsSL https://raw.githubusercontent.com/Sompote/TigrimOSR/main/install.sh | bash</code><button class="copy-btn" data-copy-prev>Copy</button></div>
-        </div>
-        <div class="install-pane" id="inst-linux">
-          <p>Native desktop or headless server. Requires Rust 1.75+ and GTK dev packages.</p>
-          <div class="cmd"><code>curl -fsSL https://raw.githubusercontent.com/Sompote/TigrimOSR/main/install-linux.sh | bash</code><button class="copy-btn" data-copy-prev>Copy</button></div>
-        </div>
-        <div class="install-pane" id="inst-win">
-          <p>PowerShell one-liner (or run <code class="inline">install.bat</code> from the repo).</p>
-          <div class="cmd"><code>irm https://raw.githubusercontent.com/Sompote/TigrimOSR/main/install.ps1 | iex</code><button class="copy-btn" data-copy-prev>Copy</button></div>
-        </div>
+      <div class="dl-card reveal">
+        <div class="dl-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 5.55l7.36-1V11H3V5.55zM3 18.45V13h7.36v6.45L3 18.45zM11.64 4.4L21 3.1V11h-9.36V4.4zM21 13v7.9l-9.36-1.3V13H21z"/></svg></div>
+        <h3>Windows</h3>
+        <p class="dl-meta">Windows x64 · v0.6.2</p>
+        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.6.2/TigrimOS-0.6.2-x64.msi">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
+          Download .msi <span class="dl-size">29 MB</span>
+        </a>
+        <div class="dl-alt">Adds a Start Menu shortcut.</div>
+        <p class="dl-note">If SmartScreen appears: <b>More info → Run anyway</b> (installer is unsigned).</p>
       </div>
-      <p class="install-note">Optional: Python 3.8+ for tool execution · Node.js 18+ only if you want Playwright browser control (Obscura needs neither). Server binds to <code class="inline">127.0.0.1:3001</code> with an access token by default.</p>
+      <div class="dl-card reveal">
+        <div class="dl-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M6.5 9l3 3-3 3M12 15h5.5"/></svg></div>
+        <h3>Linux &amp; Servers</h3>
+        <p class="dl-meta">Any distro · headless via Docker</p>
+        <div class="cmd cmd-mini"><code>git clone https://github.com/Sompote/TigrimOSR
+cd TigrimOSR &amp;&amp; docker compose up -d</code><button class="copy-btn" data-copy-prev>Copy</button></div>
+        <p class="dl-note">Auto-generates a login token and serves the web UI. Desktop build available <a href="https://github.com/Sompote/TigrimOSR#installation" target="_blank" rel="noopener">from source</a>.</p>
+      </div>
     </div>
+    <p class="install-note install-note-center reveal">All releases on <a href="https://github.com/Sompote/TigrimOSR/releases/latest" target="_blank" rel="noopener">GitHub Releases</a> · Optional: Python 3.8+ for tool execution · Node.js 18+ only for Playwright browser control (Obscura needs neither) · Server binds to <code class="inline">127.0.0.1:3001</code> with an access token by default.</p>
   </div>
 </section>
 
@@ -347,7 +357,7 @@ docker compose up -d</code><button class="copy-btn" data-copy-prev>Copy</button>
       <a href="https://github.com/Sompote/TigrimOSR" target="_blank" rel="noopener">GitHub</a>
       <a href="#swarm">Swarm Modes</a>
       <a href="#features">Features</a>
-      <a href="#install">Install</a>
+      <a href="#install">Download</a>
     </nav>
   </div>
 </footer>

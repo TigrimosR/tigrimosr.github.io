@@ -357,15 +357,6 @@
   }, { threshold: 0.4 });
   memIO.observe(document.getElementById("memChart"));
 
-  /* ---------- install tabs ---------- */
-  document.getElementById("installTabs").addEventListener("click", (e) => {
-    const btn = e.target.closest(".install-tab");
-    if (!btn) return;
-    document.querySelectorAll(".install-tab").forEach((b) => b.classList.toggle("active", b === btn));
-    document.querySelectorAll(".install-pane").forEach((p) =>
-      p.classList.toggle("active", p.id === btn.dataset.target));
-  });
-
   /* ---------- copy buttons ---------- */
   document.querySelectorAll(".copy-btn").forEach((btn) => {
     btn.addEventListener("click", async () => {
