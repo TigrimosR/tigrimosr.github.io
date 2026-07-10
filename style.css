@@ -66,12 +66,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   height: 64px; display: flex; align-items: center; gap: 28px;
 }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; letter-spacing: -.02em; }
-.brand-mark {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--accent); display: grid; place-items: center;
-  box-shadow: 0 0 0 4px var(--accent-soft);
-}
-.brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; }
+.brand-logo { height: 34px; width: auto; }
 .nav-links { display: flex; gap: 4px; margin: 0 auto; }
 .nav-links a {
   font-size: 14px; font-weight: 500; color: var(--text-2);
