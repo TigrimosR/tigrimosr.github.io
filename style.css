@@ -316,8 +316,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .dl-note b { color: #343541; }
 .dl-note a { color: var(--accent-dark); font-weight: 600; }
 .dl-note a:hover { text-decoration: underline; }
-.cmd-mini { width: 100%; padding-right: 20px; }
-.cmd-mini code { font-size: 12px; white-space: pre; word-break: normal; overflow-x: auto; padding-right: 64px; }
+.cmd.cmd-mini { width: 100%; padding: 16px 14px; }
+.cmd.cmd-mini code { font-size: 11.5px; white-space: pre; word-break: normal; overflow-x: auto; padding: 26px 0 4px; }
+.cmd.cmd-mini .copy-btn { top: 10px; right: 10px; }
 .install-note-center { max-width: 780px; margin: 34px auto 0; text-align: center; }
 .cmd {
   position: relative; background: #0d0d0d; border-radius: 12px; padding: 18px 92px 18px 20px;

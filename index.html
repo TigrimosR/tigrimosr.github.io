@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css?v=4" />
+<link rel="stylesheet" href="style.css?v=5" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 </head>
 <body>
@@ -324,10 +324,11 @@
       <div class="dl-card reveal">
         <div class="dl-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M6.5 9l3 3-3 3M12 15h5.5"/></svg></div>
         <h3>Linux &amp; Servers</h3>
-        <p class="dl-meta">Any distro · headless via Docker</p>
-        <div class="cmd cmd-mini"><code>git clone https://github.com/Sompote/TigrimOSR
-cd TigrimOSR &amp;&amp; docker compose up -d</code><button class="copy-btn" data-copy-prev>Copy</button></div>
-        <p class="dl-note">Auto-generates a login token and serves the web UI. Desktop build available <a href="https://github.com/Sompote/TigrimOSR#installation" target="_blank" rel="noopener">from source</a>.</p>
+        <p class="dl-meta">Any distro · installs Rust, then builds &amp; installs</p>
+        <div class="cmd cmd-mini"><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+curl -sSL https://raw.githubusercontent.com/Sompote/TigrimOSR/main/install-linux.sh | bash</code><button class="copy-btn" data-copy-prev>Copy</button></div>
+        <p class="dl-note">Prefer containers? <a href="https://github.com/Sompote/TigrimOSR#installation" target="_blank" rel="noopener">Docker setup</a> also works on any distro.</p>
       </div>
     </div>
     <p class="install-note install-note-center reveal">All releases on <a href="https://github.com/Sompote/TigrimOSR/releases/latest" target="_blank" rel="noopener">GitHub Releases</a> · Optional: Python 3.8+ for tool execution · Node.js 18+ only for Playwright browser control (Obscura needs neither) · Server binds to <code class="inline">127.0.0.1:3001</code> with an access token by default.</p>
