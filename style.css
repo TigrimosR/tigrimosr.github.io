@@ -67,6 +67,10 @@ html.js .reveal.in { opacity: 1; transform: none; }
 }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; letter-spacing: -.02em; }
 .brand-logo { height: 34px; width: auto; }
+.brand-osr {
+  background: linear-gradient(115deg, var(--text) 0%, #0c8a6a 55%, var(--accent) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .nav-links { display: flex; gap: 4px; margin: 0 auto; }
 .nav-links a {
   font-size: 14px; font-weight: 500; color: var(--text-2);
