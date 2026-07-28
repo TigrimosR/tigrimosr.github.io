@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TigrimOSR — The Open-Loop Agentic Platform</title>
-<meta name="description" content="TigrimOSR is a Rust-native, open-loop agentic platform. Orchestrate swarms of specialist agents and build your own agent loop in simple YAML. One binary. No Node. No Python runtime." />
+<title>TigrimOSR — The Open-Graph Agentic Platform</title>
+<meta name="description" content="TigrimOSR is a Rust-native, open-graph agentic platform. Orchestrate swarms of specialist agents, build your own agent loop in simple YAML, and gate every answer through a panel of judge agents. One binary. No Node. No Python runtime." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -23,6 +23,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#swarm">Swarm Modes</a>
       <a href="#loop">Agent Loop</a>
+      <a href="#graph">Graph Engineering</a>
       <a href="#architecture">Architecture</a>
       <a href="#features">Features</a>
       <a href="#screens">Screenshots</a>
@@ -46,13 +47,13 @@
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="pill reveal">
-      <span class="pill-dot"></span> v0.7.0 &nbsp;·&nbsp; Rust-native &nbsp;·&nbsp; Apache-2.0
+      <span class="pill-dot"></span> v0.7.1 &nbsp;·&nbsp; Rust-native &nbsp;·&nbsp; Apache-2.0
     </div>
-    <h1 class="reveal">The Open&#8209;Loop<br /><span class="grad">Agentic Platform</span></h1>
+    <h1 class="reveal">The Open&#8209;Graph<br /><span class="grad">Agentic Platform</span></h1>
     <p class="hero-sub reveal">
-      Orchestrate swarms of specialist agents, and build your own agent loop —
-      which tools, models, skills and MCP servers each agent uses — in simple YAML.
-      One self-contained binary. No Node. No Python runtime.
+      Orchestrate swarms of specialist agents, build your own agent loop in simple YAML,
+      and gate every answer through a graph of judge agents that verify — and revise —
+      the work before it reaches you. One self-contained binary. No Node. No Python runtime.
     </p>
     <div class="hero-cta reveal">
       <a class="btn btn-primary btn-lg" href="#install">Download the App
@@ -149,8 +150,51 @@
   </div>
 </section>
 
+<!-- ============ AGENTIC GRAPH ENGINEERING ============ -->
+<section class="section" id="graph">
+  <div class="section-inner split">
+    <div class="split-media reveal">
+      <div class="code-card">
+        <div class="code-bar">
+          <em>data/graph/strict.yaml</em>
+          <button class="copy-btn" data-copy="graphBlock">Copy</button>
+        </div>
+<pre id="graphBlock"><code><span class="c"># Evaluator–optimizer gate for any mode</span>
+<span class="k">worker</span>:
+  <span class="k">mode</span>: <span class="s">fully_auto</span>   <span class="c"># single / router / …</span>
+
+<span class="k">judges</span>:
+  - <span class="k">name</span>: <span class="s">accuracy</span>
+    <span class="k">model</span>: <span class="s">claude-fable-5</span>
+    <span class="k">rules</span>: <span class="s">rules/accuracy.yaml</span>
+    <span class="k">tools</span>: [<span class="s">file_read</span>]  <span class="c"># verifies output</span>
+    <span class="k">weight</span>: <span class="n">2</span>
+  - <span class="k">name</span>: <span class="s">style</span>
+    <span class="k">model</span>: <span class="s">deepseek-chat</span>
+    <span class="k">rules</span>: <span class="s">rules/style.yaml</span>
+
+<span class="k">aggregation</span>: <span class="s">all_pass</span>  <span class="c"># majority | weighted</span>
+<span class="k">max_revisions</span>: <span class="n">3</span></code></pre>
+      </div>
+    </div>
+    <div class="split-text reveal">
+      <span class="eyebrow">New in v0.7.1 — Graph mode</span>
+      <h2>Agentic Graph Engineering</h2>
+      <p>An evaluator–optimizer graph gates every answer: a panel of judge agents scores the result against your YAML rule files, returns structured revise instructions, and loops the worker through bounded revision cycles until it passes — before anything reaches you.</p>
+      <ul class="check-list">
+        <li>Single or multi-judge panels — per-judge model, endpoint, rules, weight &amp; threshold</li>
+        <li><b>all_pass</b>, <b>majority</b> or <b>weighted_average</b> aggregation; judges fail open</li>
+        <li>Tool-verifying judges open the produced files before scoring</li>
+        <li>Plain YAML on disk — the gate wraps any worker mode</li>
+        <li>Settings → Graph editors on desktop, web &amp; mobile, plus a ⬡ GRAPH badge and REST API</li>
+      </ul>
+      <p><a href="https://github.com/Sompote/TigrimOSR/releases/tag/v0.7.1" target="_blank" rel="noopener">Read the v0.7.1 release notes →</a></p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ ARCHITECTURE ============ -->
-<section class="section" id="architecture">
+<section class="section section-alt" id="architecture">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">Under the hood</span>
@@ -165,7 +209,7 @@
 </section>
 
 <!-- ============ FEATURES ============ -->
-<section class="section section-alt" id="features">
+<section class="section" id="features">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">Everything included</span>
@@ -173,11 +217,16 @@
     </div>
     <div class="feature-grid">
       <div class="feature feature-wide reveal">
-        <div class="feature-ic">🧰</div>
+        <div class="feature-ic">⬡</div>
         <div>
-          <h3>Open custom tools <span class="new-tag">New in v0.7.0</span></h3>
-          <p>Add your own agent tools by dropping a YAML file in <code class="inline">data/tools/</code> — call HTTP/REST APIs or run templated shell commands, no Rust, no rebuild. Manage everything from the new Settings → Tools UI, with per-tool profiles, timeouts and approvals. Ships with built-in academic paper search over 250M+ works via OpenAlex.</p>
+          <h3>Graph mode — judge panel <span class="new-tag">New in v0.7.1</span></h3>
+          <p>An evaluator–optimizer gate reviews every answer before it reaches you: one or more judge agents score the result against your YAML rules, return structured revise instructions, and loop the worker through bounded revision cycles until it passes. Single or multi-judge, per-judge models and weights, <b>all_pass</b> / <b>majority</b> / <b>weighted_average</b> aggregation — configured from Settings → Graph on every surface.</p>
         </div>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-ic">🧰</div>
+        <h3>Open custom tools</h3>
+        <p>Drop a YAML file in <code class="inline">data/tools/</code> to add HTTP/REST or shell tools — no Rust, no rebuild. Managed from Settings → Tools, with built-in OpenAlex paper search over 250M+ works.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-ic">🕸️</div>
@@ -187,7 +236,7 @@
       <div class="feature reveal">
         <div class="feature-ic">⚖️</div>
         <h3>Tool-using judge</h3>
-        <p>An independent verifier validates each job — with its own tools — before results ever reach you.</p>
+        <p>An independent verifier validates each job — with its own tools — before results ever reach you. Graph mode scales it to a full judge panel.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-ic">🔌</div>
@@ -229,7 +278,7 @@
 </section>
 
 <!-- ============ MEMORY CHART ============ -->
-<section class="section" id="memory">
+<section class="section section-alt" id="memory">
   <div class="section-inner split">
     <div class="split-text reveal">
       <span class="eyebrow">Featherweight</span>
@@ -257,7 +306,7 @@
 </section>
 
 <!-- ============ SCREENSHOTS ============ -->
-<section class="section section-alt" id="screens">
+<section class="section" id="screens">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">See it running</span>
@@ -294,7 +343,7 @@
 </section>
 
 <!-- ============ INSTALL ============ -->
-<section class="section" id="install">
+<section class="section section-alt" id="install">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">Get started</span>
@@ -305,23 +354,23 @@
       <div class="dl-card reveal">
         <div class="dl-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M17.05 12.54c-.03-2.62 2.14-3.88 2.24-3.94-1.22-1.79-3.12-2.03-3.8-2.06-1.61-.16-3.15.95-3.97.95-.82 0-2.08-.93-3.43-.9-1.76.03-3.39 1.02-4.3 2.6-1.83 3.18-.47 7.88 1.32 10.46.87 1.26 1.91 2.68 3.27 2.63 1.31-.05 1.81-.85 3.4-.85 1.59 0 2.03.85 3.42.82 1.42-.02 2.31-1.28 3.18-2.55 1-1.46 1.41-2.87 1.43-2.94-.03-.02-2.74-1.05-2.76-4.22zM14.44 4.83c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.25 2-1.09 3.18 1.15.09 2.33-.58 3.05-1.45z"/></svg></div>
         <h3>macOS</h3>
-        <p class="dl-meta">macOS 12+ · Apple Silicon &amp; Intel · v0.7.0</p>
-        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.0/TigrimOS-0.7.0.dmg">
+        <p class="dl-meta">macOS 12+ · Apple Silicon &amp; Intel · v0.7.1</p>
+        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/TigrimOS-0.7.1.dmg">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
-          Download .dmg <span class="dl-size">52 MB</span>
+          Download .dmg <span class="dl-size">53 MB</span>
         </a>
         <div class="dl-alt">
           Terminal builds:
-          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.0/tigrimos-0.7.0-macos-arm64.tar.gz">arm64.tar.gz</a> ·
-          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.0/tigrimos-0.7.0-macos-x86_64.tar.gz">x86_64.tar.gz</a>
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/tigrimos-0.7.1-macos-arm64.tar.gz">arm64.tar.gz</a> ·
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/tigrimos-0.7.1-macos-x86_64.tar.gz">x86_64.tar.gz</a>
         </div>
         <p class="dl-note">Not notarized yet — first launch: right-click <b>TigrimOS.app</b> → Open → Open.</p>
       </div>
       <div class="dl-card reveal">
         <div class="dl-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 5.55l7.36-1V11H3V5.55zM3 18.45V13h7.36v6.45L3 18.45zM11.64 4.4L21 3.1V11h-9.36V4.4zM21 13v7.9l-9.36-1.3V13H21z"/></svg></div>
         <h3>Windows</h3>
-        <p class="dl-meta">Windows x64 · v0.7.0</p>
-        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.0/TigrimOS-0.7.0-x64.msi">
+        <p class="dl-meta">Windows x64 · v0.7.1</p>
+        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/TigrimOS-0.7.1-x64.msi">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
           Download .msi <span class="dl-size">30 MB</span>
         </a>
@@ -345,7 +394,7 @@ curl -sSL https://raw.githubusercontent.com/Sompote/TigrimOSR/main/install-linux
 <!-- ============ CTA ============ -->
 <section class="cta">
   <div class="cta-inner reveal">
-    <h2>Own your agent loop.</h2>
+    <h2>Own your agent graph.</h2>
     <p>Open source under Apache-2.0. Star the repo, file issues, or ship a plugin.</p>
     <div class="hero-cta">
       <a class="btn btn-primary btn-lg" href="https://github.com/Sompote/TigrimOSR" target="_blank" rel="noopener">
@@ -360,10 +409,11 @@ curl -sSL https://raw.githubusercontent.com/Sompote/TigrimOSR/main/install-linux
 <footer class="footer">
   <div class="footer-inner">
     <div class="brand"><img class="brand-logo" src="assets/logo.png" alt="TigrimOS tiger logo" width="45" height="34" /> <span class="brand-name">Tigrim<span class="brand-osr">OSR</span></span></div>
-    <p>The open-loop agentic platform. Rust-native. Apache-2.0.</p>
+    <p>The open-graph agentic platform. Rust-native. Apache-2.0.</p>
     <nav>
       <a href="https://github.com/Sompote/TigrimOSR" target="_blank" rel="noopener">GitHub</a>
       <a href="#swarm">Swarm Modes</a>
+      <a href="#graph">Graph Engineering</a>
       <a href="#features">Features</a>
       <a href="#install">Download</a>
     </nav>

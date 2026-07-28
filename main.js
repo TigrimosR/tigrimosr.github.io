@@ -52,6 +52,7 @@
     { text: "$ tigrimos --headless", cls: "" },
     { text: "✔ Rust core online — 1 binary, 0 runtimes", cls: "ok" },
     { text: "✔ Swarm ready: 5 agents · mode=hierarchical", cls: "ok" },
+    { text: "✔ Graph gate on: 2 judges · all_pass", cls: "ok" },
     { text: "✔ Web UI → http://127.0.0.1:3001  (~270 MB RAM)", cls: "ok" },
   ];
   const termEl = document.getElementById("typedTerm");
