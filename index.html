@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TigrimOSR — The Open-Graph Agentic Platform</title>
-<meta name="description" content="TigrimOSR is a Rust-native, open-graph agentic platform. Orchestrate swarms of specialist agents, build your own agent loop in simple YAML, and gate every answer through a panel of judge agents. One binary. No Node. No Python runtime." />
+<meta name="description" content="TigrimOSR is a Rust-native, open-graph agentic platform. Orchestrate swarms of specialist agents, build your own agent loop in simple YAML, and gate every answer through a panel of judge agents. Desktop, headless, and a 4 MB tigrim CLI. One binary. No Node. No Python runtime." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css?v=7" />
+<link rel="stylesheet" href="style.css?v=8" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 </head>
 <body>
@@ -24,6 +24,7 @@
       <a href="#swarm">Swarm Modes</a>
       <a href="#loop">Agent Loop</a>
       <a href="#graph">Graph Engineering</a>
+      <a href="#cli">CLI</a>
       <a href="#architecture">Architecture</a>
       <a href="#features">Features</a>
       <a href="#screens">Screenshots</a>
@@ -47,7 +48,7 @@
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="pill reveal">
-      <span class="pill-dot"></span> v0.7.1 &nbsp;·&nbsp; Rust-native &nbsp;·&nbsp; Apache-2.0
+      <span class="pill-dot"></span> v0.7.2 &nbsp;·&nbsp; Rust-native &nbsp;·&nbsp; Apache-2.0
     </div>
     <h1 class="reveal">The Open&#8209;Graph<br /><span class="grad">Agentic Platform</span></h1>
     <p class="hero-sub reveal">
@@ -62,7 +63,7 @@
       <a class="btn btn-ghost btn-lg" href="https://github.com/Sompote/TigrimOSR" target="_blank" rel="noopener">View on GitHub</a>
     </div>
     <div class="hero-terminal reveal">
-      <div class="term-bar"><span></span><span></span><span></span><em>tigrimos — zsh</em></div>
+      <div class="term-bar"><span></span><span></span><span></span><em>tigrim — zsh</em></div>
       <pre class="term-body"><code id="typedTerm"></code><span class="caret"></span></pre>
     </div>
   </div>
@@ -71,9 +72,9 @@
 <!-- ============ STATS ============ -->
 <section class="stats">
   <div class="stats-inner">
-    <div class="stat reveal"><b><span class="count" data-to="270">0</span>&nbsp;MB</b><span>idle RAM — app + server + live browser</span></div>
+    <div class="stat reveal"><b><span class="count" data-to="4">0</span>&nbsp;MB</b><span>idle RAM — the new <b>tigrim</b> CLI agent</span></div>
     <div class="stat reveal"><b><span class="count" data-to="6">0</span></b><span>swarm modes for multi-agent teams</span></div>
-    <div class="stat reveal"><b><span class="count" data-to="1">0</span></b><span>self-contained binary — desktop &amp; headless</span></div>
+    <div class="stat reveal"><b><span class="count" data-to="1">0</span></b><span>self-contained binary — desktop, headless &amp; CLI</span></div>
     <div class="stat reveal"><b><span class="count" data-to="0">0</span></b><span>required runtimes — no Node, no Python to run</span></div>
   </div>
 </section>
@@ -178,7 +179,7 @@
       </div>
     </div>
     <div class="split-text reveal">
-      <span class="eyebrow">New in v0.7.1 — Graph mode</span>
+      <span class="eyebrow">Graph mode</span>
       <h2>Agentic Graph Engineering</h2>
       <p>An evaluator–optimizer graph gates every answer: a panel of judge agents scores the result against your YAML rule files, returns structured revise instructions, and loops the worker through bounded revision cycles until it passes — before anything reaches you.</p>
       <ul class="check-list">
@@ -188,13 +189,51 @@
         <li>Plain YAML on disk — the gate wraps any worker mode</li>
         <li>Settings → Graph editors on desktop, web &amp; mobile, plus a ⬡ GRAPH badge and REST API</li>
       </ul>
-      <p><a href="https://github.com/Sompote/TigrimOSR/releases/tag/v0.7.1" target="_blank" rel="noopener">Read the v0.7.1 release notes →</a></p>
+      <p><a href="https://github.com/Sompote/TigrimOSR/releases/tag/v0.7.2" target="_blank" rel="noopener">Read the v0.7.2 release notes →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLI MODE ============ -->
+<section class="section section-alt" id="cli">
+  <div class="section-inner split">
+    <div class="split-text reveal">
+      <span class="eyebrow">New in v0.7.2 — CLI mode</span>
+      <h2>The whole agent, in your terminal</h2>
+      <p><b>tigrim</b> is a Claude Code-style terminal agent: copy one self-contained binary into any folder and run it there. The folder becomes the agent's workspace, with project-local YAML agents, loop profiles and graph judges in <code class="inline">.tigrimos/</code> — and it idles at <b>~4&nbsp;MB</b> of RAM.</p>
+      <ul class="check-list">
+        <li>Interactive REPL with slash commands — <code class="inline">/agents</code>, <code class="inline">/model</code>, <code class="inline">/mode</code>, <code class="inline">/loop</code>, <code class="inline">/graph</code>, <code class="inline">/mcp</code>, <code class="inline">/status</code></li>
+        <li>One-shot mode for scripts &amp; CI: only the final answer goes to stdout — safe to pipe</li>
+        <li>Swarm, agent-loop and graph judge-panel profiles, same as the desktop app</li>
+        <li>Per-folder <code class="inline">.env</code> credentials, auto-gitignored — <code class="inline">git add .</code> can never commit your key</li>
+        <li>Clean exit codes (0 / 1 / 2 / 130) and <code class="inline">--yes</code> auto-approval for pipelines</li>
+      </ul>
+    </div>
+    <div class="split-media reveal">
+      <div class="code-card">
+        <div class="code-bar">
+          <em>tigrim — zsh</em>
+          <button class="copy-btn" data-copy="cliBlock">Copy</button>
+        </div>
+<pre id="cliBlock"><code><span class="c"># grab the binary, run it anywhere</span>
+<span class="k">$</span> curl -L https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/tigrim-0.7.2-macos-arm64.tar.gz | tar xz
+<span class="k">$</span> ./tigrim
+<span class="s">tigrim v0.7.2 — workspace: ./my-project</span>
+<span class="s">~4 MB RSS · /agents /graph /mcp /status</span>
+
+<span class="c"># one-shot: script it, pipe it</span>
+<span class="k">$</span> ./tigrim -p <span class="s">"run the tests and summarize failures"</span> --yes
+<span class="k">$</span> ./tigrim -p <span class="s">"draft release notes from git log"</span> \
+    --model kimi-k3 &gt; notes.md
+<span class="k">$</span> ./tigrim -p <span class="s">"audit this folder"</span> \
+    --loop strict_review --graph default</code></pre>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ ARCHITECTURE ============ -->
-<section class="section section-alt" id="architecture">
+<section class="section" id="architecture">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">Under the hood</span>
@@ -209,7 +248,7 @@
 </section>
 
 <!-- ============ FEATURES ============ -->
-<section class="section" id="features">
+<section class="section section-alt" id="features">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">Everything included</span>
@@ -217,11 +256,16 @@
     </div>
     <div class="feature-grid">
       <div class="feature feature-wide reveal">
-        <div class="feature-ic">⬡</div>
+        <div class="feature-ic">⌨️</div>
         <div>
-          <h3>Graph mode — judge panel <span class="new-tag">New in v0.7.1</span></h3>
-          <p>An evaluator–optimizer gate reviews every answer before it reaches you: one or more judge agents score the result against your YAML rules, return structured revise instructions, and loop the worker through bounded revision cycles until it passes. Single or multi-judge, per-judge models and weights, <b>all_pass</b> / <b>majority</b> / <b>weighted_average</b> aggregation — configured from Settings → Graph on every surface.</p>
+          <h3>CLI mode — <code class="inline">tigrim</code> <span class="new-tag">New in v0.7.2</span></h3>
+          <p>A Claude Code-style terminal agent in one self-contained binary: copy it into any folder and that folder becomes the workspace, with project-local YAML agents, loop profiles and graph judges in <code class="inline">.tigrimos/</code>. Interactive REPL with slash commands, or one-shot <code class="inline">-p</code> mode where only the final answer hits stdout — safe to pipe into scripts and CI. Idles at <b>~4&nbsp;MB</b> of RAM.</p>
         </div>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-ic">⬡</div>
+        <h3>Graph mode — judge panel</h3>
+        <p>An evaluator–optimizer gate: judge agents score every answer against your YAML rules and loop the worker through bounded revisions until it passes. <b>all_pass</b> / <b>majority</b> / <b>weighted_average</b> aggregation.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-ic">🧰</div>
@@ -264,6 +308,11 @@
         <p>Key-free CLI agents — Claude Code, Gemini CLI, OpenAI Codex — plus Anthropic, DeepSeek, Kimi, Gemini, Ollama and any OpenAI-compatible API.</p>
       </div>
       <div class="feature reveal">
+        <div class="feature-ic">📅</div>
+        <h3>Google in three clicks</h3>
+        <p>Connect Gmail, Calendar and Drive with a browser login — on desktop and the remote web UI. Plus a <code class="inline">search_papers</code> tool over 250M+ scholarly works with DOI and citation counts.</p>
+      </div>
+      <div class="feature reveal">
         <div class="feature-ic">🔒</div>
         <h3>Secure by default</h3>
         <p>Local-only binding with access tokens, sandboxed code execution, non-root containers, and API-key masking across every surface.</p>
@@ -278,35 +327,45 @@
 </section>
 
 <!-- ============ MEMORY CHART ============ -->
-<section class="section section-alt" id="memory">
+<section class="section" id="memory">
   <div class="section-inner split">
     <div class="split-text reveal">
       <span class="eyebrow">Featherweight</span>
-      <h2>~270 MB. Browser included.</h2>
-      <p>Native Rust eliminates interpreted runtimes, and a single-process browser avoids multi-process Chromium overhead. The whole platform idles lighter than most Electron apps' splash screens.</p>
+      <h2>4 MB in the terminal.<br />270 MB with a live browser.</h2>
+      <p>Pick the surface, pay only for what it renders. The desktop's ~190&nbsp;MB is almost entirely the GUI stack — window surface, font atlases, GPU textures. The agent engine itself is single-digit megabytes, which is exactly what the CLI and headless server run at.</p>
+      <ul class="check-list">
+        <li><b>CLI</b> — the <code class="inline">tigrim</code> agent, ~4 MB idle, ~10 MB peak during a live LLM run</li>
+        <li><b>Headless</b> — full server + web UI at ~7 MB idle</li>
+        <li><b>Desktop UI</b> — native egui app + embedded server, ~190 MB</li>
+        <li><b>UI + web browser</b> — adds the Obscura Rust browser engine (~60 MB), ~270 MB total</li>
+      </ul>
     </div>
     <div class="split-media reveal">
       <div class="mem-chart" id="memChart">
         <div class="mem-row">
-          <span class="mem-label">TigrimOSR</span>
-          <div class="mem-track"><div class="mem-bar mem-bar-hero" data-w="7"><i>~270 MB</i></div></div>
+          <span class="mem-label">CLI (tigrim)</span>
+          <div class="mem-track"><div class="mem-bar mem-bar-hero" data-w="2"><i>~4 MB</i></div></div>
         </div>
         <div class="mem-row">
-          <span class="mem-label">Hermes</span>
-          <div class="mem-track"><div class="mem-bar" data-w="34"><i>1.2–1.8 GB</i></div></div>
+          <span class="mem-label">Headless server</span>
+          <div class="mem-track"><div class="mem-bar mem-bar-hero" data-w="3"><i>~7 MB</i></div></div>
         </div>
         <div class="mem-row">
-          <span class="mem-label">OpenClaw</span>
-          <div class="mem-track"><div class="mem-bar" data-w="100"><i>2–7.5 GB</i></div></div>
+          <span class="mem-label">Desktop UI</span>
+          <div class="mem-track"><div class="mem-bar" data-w="70"><i>~190 MB</i></div></div>
         </div>
-        <p class="mem-note">Idle RAM, app + server + live browser, as reported in the README.</p>
+        <div class="mem-row">
+          <span class="mem-label">UI + web browser</span>
+          <div class="mem-track"><div class="mem-bar" data-w="100"><i>~270 MB</i></div></div>
+        </div>
+        <p class="mem-note">Idle resident memory (RSS), macOS release builds after full startup, as reported in the README. UI + browser = app + embedded server (~210 MB) + Obscura engine (~60 MB).</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ SCREENSHOTS ============ -->
-<section class="section" id="screens">
+<section class="section section-alt" id="screens">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">See it running</span>
@@ -343,7 +402,7 @@
 </section>
 
 <!-- ============ INSTALL ============ -->
-<section class="section section-alt" id="install">
+<section class="section" id="install">
   <div class="section-inner">
     <div class="section-head reveal">
       <span class="eyebrow">Get started</span>
@@ -354,27 +413,33 @@
       <div class="dl-card reveal">
         <div class="dl-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M17.05 12.54c-.03-2.62 2.14-3.88 2.24-3.94-1.22-1.79-3.12-2.03-3.8-2.06-1.61-.16-3.15.95-3.97.95-.82 0-2.08-.93-3.43-.9-1.76.03-3.39 1.02-4.3 2.6-1.83 3.18-.47 7.88 1.32 10.46.87 1.26 1.91 2.68 3.27 2.63 1.31-.05 1.81-.85 3.4-.85 1.59 0 2.03.85 3.42.82 1.42-.02 2.31-1.28 3.18-2.55 1-1.46 1.41-2.87 1.43-2.94-.03-.02-2.74-1.05-2.76-4.22zM14.44 4.83c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.29.69-3.03 1.56-.66.77-1.25 2-1.09 3.18 1.15.09 2.33-.58 3.05-1.45z"/></svg></div>
         <h3>macOS</h3>
-        <p class="dl-meta">macOS 12+ · Apple Silicon &amp; Intel · v0.7.1</p>
-        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/TigrimOS-0.7.1.dmg">
+        <p class="dl-meta">macOS 12+ · Apple Silicon &amp; Intel · v0.7.2</p>
+        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/TigrimOS-0.7.2.dmg">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
-          Download .dmg <span class="dl-size">53 MB</span>
+          Download .dmg <span class="dl-size">58 MB</span>
         </a>
         <div class="dl-alt">
-          Terminal builds:
-          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/tigrimos-0.7.1-macos-arm64.tar.gz">arm64.tar.gz</a> ·
-          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/tigrimos-0.7.1-macos-x86_64.tar.gz">x86_64.tar.gz</a>
+          CLI agent (<code class="inline">tigrim</code>):
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/tigrim-0.7.2-macos-arm64.tar.gz">arm64.tar.gz</a> ·
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/tigrim-0.7.2-macos-x86_64.tar.gz">x86_64.tar.gz</a><br />
+          Headless server:
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/tigrimos-0.7.2-macos-arm64.tar.gz">arm64.tar.gz</a> ·
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/tigrimos-0.7.2-macos-x86_64.tar.gz">x86_64.tar.gz</a>
         </div>
         <p class="dl-note">Not notarized yet — first launch: right-click <b>TigrimOS.app</b> → Open → Open.</p>
       </div>
       <div class="dl-card reveal">
         <div class="dl-ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 5.55l7.36-1V11H3V5.55zM3 18.45V13h7.36v6.45L3 18.45zM11.64 4.4L21 3.1V11h-9.36V4.4zM21 13v7.9l-9.36-1.3V13H21z"/></svg></div>
         <h3>Windows</h3>
-        <p class="dl-meta">Windows x64 · v0.7.1</p>
-        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.1/TigrimOS-0.7.1-x64.msi">
+        <p class="dl-meta">Windows x64 · v0.7.2</p>
+        <a class="btn btn-primary dl-btn" href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/TigrimOS-0.7.2-x64.msi">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
-          Download .msi <span class="dl-size">30 MB</span>
+          Download .msi <span class="dl-size">33 MB</span>
         </a>
-        <div class="dl-alt">Adds a Start Menu shortcut.</div>
+        <div class="dl-alt">
+          Adds a Start Menu shortcut. CLI agent:
+          <a href="https://github.com/Sompote/TigrimOSR/releases/download/v0.7.2/tigrim-0.7.2-windows-x64.zip">tigrim-0.7.2-windows-x64.zip</a>
+        </div>
         <p class="dl-note">If SmartScreen appears: <b>More info → Run anyway</b> (installer is unsigned).</p>
       </div>
       <div class="dl-card reveal">
@@ -414,6 +479,7 @@ curl -sSL https://raw.githubusercontent.com/Sompote/TigrimOSR/main/install-linux
       <a href="https://github.com/Sompote/TigrimOSR" target="_blank" rel="noopener">GitHub</a>
       <a href="#swarm">Swarm Modes</a>
       <a href="#graph">Graph Engineering</a>
+      <a href="#cli">CLI</a>
       <a href="#features">Features</a>
       <a href="#install">Download</a>
     </nav>

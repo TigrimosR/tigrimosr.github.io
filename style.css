@@ -263,9 +263,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
   box-shadow: var(--shadow); padding: 34px 30px;
 }
-.mem-row { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 14px; margin-bottom: 22px; }
+.mem-row { display: grid; grid-template-columns: 128px 1fr; align-items: center; gap: 14px; margin-bottom: 22px; }
 .mem-label { font-size: 13.5px; font-weight: 600; color: var(--text-2); text-align: right; }
-.mem-row:first-child .mem-label { color: var(--accent-dark); }
+.mem-row:has(.mem-bar-hero) .mem-label { color: var(--accent-dark); }
 .mem-track { background: var(--bg-alt); border-radius: 999px; height: 34px; overflow: hidden; }
 .mem-bar {
   height: 100%; width: 0; border-radius: 999px;
