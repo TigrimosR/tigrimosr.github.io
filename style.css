@@ -189,6 +189,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 /* ---------- split layout ---------- */
 .split { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; }
+.split > * { min-width: 0; }
 .split-text .eyebrow { margin-bottom: 16px; }
 .split-text h2 { margin-bottom: 16px; }
 .split-text > p { color: var(--text-2); font-size: 16.5px; }
